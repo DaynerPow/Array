@@ -15,37 +15,37 @@ namespace Array
 
             int[] numbers = new int[1000];
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                numbers[i] = rnd.Next(1, 10);
-                Console.Write(numbers[i]);
-
-                if (i < 1000 - 1)
+                for (int i = 0; i < numbers.Length; i++)
                 {
-                    Console.Write(", ");
+                    numbers[i] = rnd.Next(1, 10);
+                    Console.Write(numbers[i]);
+
+                        if (i < 1000 - 1)
+                        {
+                            Console.Write(", ");
+                        }
                 }
-            }
 
 
             int[] count = new int[10];
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                count[numbers[i]]++;
-            }
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    count[numbers[i]]++;
+                }
 
 
             int minCount = count[1];
             int result = 1;
 
-            for (int i = 2; i <= 9; i++)
-            {
-                if (count[i] < minCount)
+                for (int i = 2; i <= 9; i++)
                 {
-                    minCount = count[i];
-                    result = i;
+                    if (count[i] < minCount)
+                    {
+                        minCount = count[i];
+                        result = i;
+                    }
                 }
-            }
 
             Console.WriteLine("\n\nЧисло, яке найменше повторювалося: " + result);
             Console.WriteLine("Кількість повторень: " + minCount);
@@ -64,42 +64,42 @@ namespace Array
             int[] numbers = new int[size];
             Random rnd = new Random();
 
-            for (int i = 0; i < size; i++)
-            {
-                numbers[i] = rnd.Next(min, max + 1);
-            }
+                for (int i = 0; i < size; i++)
+                {
+                    numbers[i] = rnd.Next(min, max + 1);
+                }
 
             Console.WriteLine("\nЗгенерований масив: ");
-            for (int i = 0; i < size; ++i)
-            {
-                Console.Write(numbers[i]);
-
-                if (i < size - 1)
+                for (int i = 0; i < size; ++i)
                 {
-                    Console.Write(", ");
+                    Console.Write(numbers[i]);
+
+                        if (i < size - 1)
+                        {
+                            Console.Write(", ");
+                        }
                 }
-            }
 
             HashSet<int> uniqueSet = new HashSet<int>();
-            foreach (int num in numbers)
-            {
-                uniqueSet.Add(num);
-            }
+                foreach (int num in numbers)
+                {
+                    uniqueSet.Add(num);
+                }
 
             int[] result = new int[uniqueSet.Count];
             uniqueSet.CopyTo(result);
 
             Console.WriteLine("\n\nМасив без дублікатів: ");
-            for (int i = 0; i < result.Length; ++i)
-            {
-
-                Console.Write(result[i]);
-
-                if (i < result.Length - 1)
+                for (int i = 0; i < result.Length; ++i)
                 {
-                    Console.Write(", ");
+
+                    Console.Write(result[i]);
+
+                        if (i < result.Length - 1)
+                        {
+                            Console.Write(", ");
+                        }
                 }
-            }
         }
 
 
@@ -107,21 +107,41 @@ namespace Array
         {
             Random rnd = new Random();
 
-            int size = input("Введіть довжину масиву: ");
+            int size = input("Введіть довжину масиву:  \n");
 
             int[] numbers = new int[size];
 
             for (int i = 0;i < size; ++i)
             {
                 numbers[i] = rnd.Next(100, 901);
-
-                if(i >=  i + 1 && i >= i - 1)
-                {
-                    
-                }
-
             }
 
+            Console.WriteLine("\nІндекси піків: ");
+
+            for( int i = 0; i < size; i++)
+            {
+                if (i == 0)
+                {
+                    if (numbers[i] >= numbers[i + 1])
+                    {
+                        Console.WriteLine(i + " ");
+                    }
+                }
+                else if (i == size -1)
+                {
+                    if (numbers[i] >= numbers[i - 1])
+                    {
+                        Console.WriteLine(i + " ");
+                    }
+                }
+                else
+                {
+                    if (numbers[i] >= numbers[i - 1] && numbers[i] >= numbers[i + 1])
+                    {
+                        Console.Write(i + " ");
+                    }
+                }
+            }
         }
 
 
