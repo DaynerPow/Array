@@ -217,7 +217,28 @@ namespace Array
 
         static void Task5()
         {
-            GenerateArray(20, 10, 100);
+            int[] array = GenerateArray(20, 10, 100);
+            PrintArray(array);
+
+            int maxSum = array[0] + array[1] + array[2];
+            int maxIndex = 0;
+
+            for (int i = 1; i < array.Length - 2; i++)
+            {
+                int sum = array[i] + array[i + 1] + array[i + 2];
+
+                if (sum > maxSum)
+                {
+                    maxSum = sum;
+                    maxIndex = i;
+                }
+            }
+
+            Console.WriteLine("\nНайбільша сума: " + maxSum);
+
+            Console.WriteLine("Індекси підмасиву: ");
+            Console.WriteLine(maxIndex + ", " + (maxIndex +1) + ", " + (maxIndex + 2));
+
         }
 
         static void Main(string[] args)
