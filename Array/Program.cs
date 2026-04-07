@@ -6,73 +6,11 @@ namespace Array
 {
     internal class Program
     {
-        static int Input(string text)
-        {
-            Console.WriteLine(text);
-            return Convert.ToInt32(Console.ReadLine());
-        }
-
-        static int[] GenerateArray(int size, int min, int max)
-        {
-            Random rnd = new Random();
-            int[] array = new int[size];
-
-            for (int i = 0; i < size; i++)
-            {
-                array[i] = rnd.Next(min, max + 1);
-            }
-
-            return array;
-        }
-
-        static void PrintArray(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write(array[i]);
-
-                if (i < array.Length - 1)
-                {
-                    Console.Write(", ");
-                }
-            }
-            Console.WriteLine();
-        }
-
-        static void PrintPeaks(int[] numbers)
-        {
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (i == 0)
-                {
-                    if (numbers[i] >= numbers[i + 1])
-                    {
-                        Console.Write(i + " ");
-                    }
-                }
-                else if (i == numbers.Length - 1)
-                {
-                    if (numbers[i] >= numbers[i - 1])
-                    {
-                        Console.Write(i + " ");
-                    }
-                }
-                else
-                {
-                    if (numbers[i] >= numbers[i - 1] && numbers[i] >= numbers[i + 1])
-                    {
-                        Console.Write(i + " ");
-                    }
-                }
-            }
-            Console.WriteLine();
-        }
-
         static void Task1()
         {
-            int[] numbers = GenerateArray(1000, 1, 9);
+            int[] numbers = DayLibary.GenerateArray(1000, 1, 9);
 
-            PrintArray(numbers);
+            DayLibary.PrintArray(numbers);
 
             int[] count = new int[10];
 
@@ -101,14 +39,14 @@ namespace Array
         {
             try
             {
-                int size = Input("Введіть розмір масиву:");
-                int min = Input("Введіть початок діапазону (Від):");
-                int max = Input("Введіть кінець діапазону (До):");
+                int size = DayLibary.Input("Введіть розмір масиву:");
+                int min = DayLibary.Input("Введіть початок діапазону (Від):");
+                int max = DayLibary.Input("Введіть кінець діапазону (До):");
 
-                int[] numbers = GenerateArray(size, min, max);
+                int[] numbers = DayLibary.GenerateArray(size, min, max);
 
                 Console.WriteLine("\nЗгенерований масив:");
-                PrintArray(numbers);
+                DayLibary.PrintArray(numbers);
 
                 HashSet<int> uniqueSet = new HashSet<int>();
 
@@ -121,7 +59,7 @@ namespace Array
                 uniqueSet.CopyTo(result);
 
                 Console.WriteLine("\nМасив без дублікатів:");
-                PrintArray(result);
+                DayLibary.PrintArray(result);
             }
             catch
             {
@@ -133,15 +71,15 @@ namespace Array
         {
             try
             {
-                int size = Input("Введіть довжину масиву:");
+                int size = DayLibary.Input("Введіть довжину масиву:");
 
-                int[] numbers = GenerateArray(size, 100, 900);
+                int[] numbers = DayLibary.GenerateArray(size, 100, 900);
 
                 Console.WriteLine("\nМасив:");
-                PrintArray(numbers);
+                DayLibary.PrintArray(numbers);
 
                 Console.WriteLine("\nІндекси піків:");
-                PrintPeaks(numbers);
+                DayLibary.PrintPeaks(numbers);
             }
             catch
             {
@@ -217,8 +155,8 @@ namespace Array
 
         static void Task5()
         {
-            int[] array = GenerateArray(20, 10, 100);
-            PrintArray(array);
+            int[] array = DayLibary.GenerateArray(20, 10, 100);
+            DayLibary.  PrintArray(array);
 
             int maxSum = array[0] + array[1] + array[2];
             int maxIndex = 0;
